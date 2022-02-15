@@ -10,7 +10,11 @@ export interface IProduct {
   numReviews: number;
 }
 
-export type Product = IProduct | undefined;
+export interface IError {
+  message: string;
+}
+
+export type Product = IProduct | undefined | IError;
 export type Products = IProduct[] | undefined;
 
 const products: IProduct[] = [
