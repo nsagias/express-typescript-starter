@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import express from "express";
+import express, { Request, Response} from "express";
 import cors from "cors";
 import helmet from "helmet";
 
@@ -11,8 +11,8 @@ app.use(express.json());
 dotenv.config();
 
 
-app.get('/', (req, res) => {
-  const message = {"welcome": "Hello World!"};
+app.get('/', (req: Request, res: Response) => {
+  const message: {"welcome": string} = {"welcome": "Hello World!"};
   res.json(message);
 });
 
