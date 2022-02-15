@@ -19,7 +19,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 
-app.get('/products', (req: Request, res: Response): void => {
+app.get('/products', (req: Request, res: Response) => {
   let allProducts: Products;
   try {
     allProducts = [...products];
@@ -27,30 +27,34 @@ app.get('/products', (req: Request, res: Response): void => {
     if (!Array.isArray(allProducts)) allProducts = {message: "not and array"};
     if (Array.isArray(allProducts) &&  allProducts.length <= 0) allProducts = {message: "zero length"};
     
-    res.json(allProducts);
+    // res.json(allProducts);
     
   } catch (error: any) {
 
     allProducts = {message: error.message};
     console.error(allProducts);
   };
+  res.status(200).json(allProducts);
 
 });
 
 
-app.get('/products/:id', (req: Request, res: Response): void => {
+app.get('/products/:id', (req: Request, res: Response) => {
   let productById: Product;
   try {
     productById = products.find((p) => p._id === req.params.id);
     if (!productById) productById = {message: "undefind"};
     if (productById !== productById as IProduct ) productById = {message: "undefind"};
-    res.json(productById);
+    return res.json(productById);
 
   } catch (error: any) {
 
     productById = {message: error.message};
     console.error(productById);
+    return res.status(404).json(productById);
+   
   };
+
 });
 
 
