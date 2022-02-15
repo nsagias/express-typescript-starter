@@ -19,10 +19,19 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.get('/products', (req: Request, res: Response) => {
+  let allProducts: Products;
+  try {
 
+    allProducts = products;
+    if (!allProducts) allProducts = {message: "undefind"};
+    res.json(allProducts);
 
-  const message: Products = products;
-  res.json(message);
+  } catch (error: any) {
+
+    allProducts = {message: error.message};
+    console.error(allProducts);
+  };
+
 });
 
 
