@@ -25,8 +25,15 @@ app.get('/products', (req: Request, res: Response) => {
 
 
 app.get('/products/:id', (req, res) => {
-  const product: Product = products.find((p) => p._id === req.params.id);
-  res.json(product);
+  let product: Product;
+  try {
+    product = products.find((p) => p._id === req.params.id);
+    if (!product) product = {message: "undefind"};
+    res.json(product);
+  } catch (error: any) {
+    product = {message: error.message};
+    console.error(product);
+  };
 });
 
 
