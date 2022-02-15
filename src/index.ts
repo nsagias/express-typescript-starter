@@ -11,6 +11,13 @@ app.use(express.json());
 dotenv.config();
 
 
+app.get('/', (req, res) => {
+  const message = {"welcome": "Hello World!"};
+  res.json(message);
+});
+
+
+
 const PORT: number = parseInt(process.env.PORT as string, 10);
 
 app.listen(PORT, () => {
