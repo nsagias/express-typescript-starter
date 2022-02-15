@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import express, { Request, Response} from "express";
 import cors from "cors";
 import helmet from "helmet";
+import products, { IProduct } from "../products_db";
 
 const app = express();
 app.use(helmet());
@@ -16,6 +17,23 @@ app.get('/', (req: Request, res: Response) => {
   res.json(message);
 });
 
+
+app.get('/products', (req: Request, res: Response) => {
+  const message: IProduct[] | undefined = products;
+  res.json(message);
+});
+
+
+app.get('/api/products/:id', (req, res) => {
+  const product: IProduct | undefined = products.find((p) => p._id === req.params.id);
+  res.json(product);
+});
+
+
+app.get('/a-products', async (req: Request, res: Response) => {
+  const message: IProduct[] | undefined = await products;
+  res.json(message);
+});
 
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
