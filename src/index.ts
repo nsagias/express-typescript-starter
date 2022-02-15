@@ -19,20 +19,25 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.get('/products', (req: Request, res: Response) => {
+
+
   const message: Products = products;
   res.json(message);
 });
 
 
 app.get('/products/:id', (req: Request, res: Response) => {
-  let product: Product;
+  let productById: Product;
   try {
-    product = products.find((p) => p._id === req.params.id);
-    if (!product) product = {message: "undefind"};
-    res.json(product);
+
+    productById = products.find((p) => p._id === req.params.id);
+    if (!productById) productById = {message: "undefind"};
+    res.json(productById);
+
   } catch (error: any) {
-    product = {message: error.message};
-    console.error(product);
+
+    productById = {message: error.message};
+    console.error(productById);
   };
 });
 
