@@ -24,7 +24,9 @@ app.get('/products', (req: Request, res: Response): void => {
   try {
     allProducts = [...products];
     if (!allProducts) allProducts = {message: "undefind"};
-    if (!Array.isArray(allProducts)) allProducts = {message: "undefind"};
+    if (!Array.isArray(allProducts)) allProducts = {message: "not and array"};
+    if (Array.isArray(allProducts) &&  allProducts.length <= 0) allProducts = {message: "zero length"};
+    
     res.json(allProducts);
     
   } catch (error: any) {
