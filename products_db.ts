@@ -15,7 +15,7 @@ export interface IError {
 }
 
 export type Product = IProduct | undefined | IError;
-export type Products = IProduct[] | undefined;
+export type Products = IProduct[] | undefined | IError;
 
 const products: IProduct[] = [
   {
