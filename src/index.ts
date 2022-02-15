@@ -19,10 +19,10 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 
-app.get('/products', (req: Request, res: Response) => {
+app.get('/products', (req: Request, res: Response): void => {
   let allProducts: Products;
   try {
-    allProducts = products;
+    allProducts = [...products];
     if (!allProducts) allProducts = {message: "undefind"};
     if (!Array.isArray(allProducts)) allProducts = {message: "undefind"};
     res.json(allProducts);
@@ -36,7 +36,7 @@ app.get('/products', (req: Request, res: Response) => {
 });
 
 
-app.get('/products/:id', (req: Request, res: Response) => {
+app.get('/products/:id', (req: Request, res: Response): void => {
   let productById: Product;
   try {
     productById = products.find((p) => p._id === req.params.id);
