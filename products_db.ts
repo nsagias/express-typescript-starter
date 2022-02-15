@@ -10,6 +10,9 @@ export interface IProduct {
   numReviews: number;
 }
 
+export type Product = IProduct | undefined;
+export type Products = IProduct[] | undefined;
+
 const products: IProduct[] = [
   {
     _id: '1',
