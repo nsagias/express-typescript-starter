@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/nsagias/express-typescript-starter/issues"
   },
-  "homepage": "https://github.com/nsagias/express-typescript-starter#readme"
+  "homepage": "https://github.com/nsagias/express-typescript-starter#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "helmet": "^5.0.2"
+  }
 }
