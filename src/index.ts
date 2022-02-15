@@ -21,11 +21,11 @@ app.get('/', (req: Request, res: Response) => {
 app.get('/products', (req: Request, res: Response) => {
   let allProducts: Products;
   try {
-
     allProducts = products;
     if (!allProducts) allProducts = {message: "undefind"};
+    if (!Array.isArray(allProducts)) allProducts = {message: "undefind"};
     res.json(allProducts);
-
+    
   } catch (error: any) {
 
     allProducts = {message: error.message};
@@ -38,9 +38,9 @@ app.get('/products', (req: Request, res: Response) => {
 app.get('/products/:id', (req: Request, res: Response) => {
   let productById: Product;
   try {
-
     productById = products.find((p) => p._id === req.params.id);
     if (!productById) productById = {message: "undefind"};
+    if (productById !== productById as IProduct ) productById = {message: "undefind"};
     res.json(productById);
 
   } catch (error: any) {
