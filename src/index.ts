@@ -24,7 +24,7 @@ app.get('/products', (req: Request, res: Response) => {
 });
 
 
-app.get('/products/:id', (req, res) => {
+app.get('/products/:id', (req: Request, res: Response) => {
   let product: Product;
   try {
     product = products.find((p) => p._id === req.params.id);
