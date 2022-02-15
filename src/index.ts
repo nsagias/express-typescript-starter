@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 import express, { Request, Response} from "express";
 import cors from "cors";
 import helmet from "helmet";
-import products, { IProduct } from "../products_db";
+import products, { IProduct, Product, Products} from "../products_db";
 
 const app = express();
 app.use(helmet());
@@ -19,19 +19,19 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.get('/products', (req: Request, res: Response) => {
-  const message: IProduct[] | undefined = products;
+  const message: Products = products;
   res.json(message);
 });
 
 
 app.get('/api/products/:id', (req, res) => {
-  const product: IProduct | undefined = products.find((p) => p._id === req.params.id);
+  const product: Product = products.find((p) => p._id === req.params.id);
   res.json(product);
 });
 
 
 app.get('/a-products', async (req: Request, res: Response) => {
-  const message: IProduct[] | undefined = await products;
+  const message: Products = await products;
   res.json(message);
 });
 
